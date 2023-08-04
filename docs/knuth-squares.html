@@ -124,6 +124,10 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#prova-1" id="toc-prova-1" class="nav-link" data-scroll-target="#prova-1">Prova</a></li>
   </ul></li>
+  <li><a href="#n-termina-em-3" id="toc-n-termina-em-3" class="nav-link" data-scroll-target="#n-termina-em-3"><span class="math inline">\(n\)</span> termina em <span class="math inline">\(3\)</span></a>
+  <ul class="collapse">
+  <li><a href="#prova-2" id="toc-prova-2" class="nav-link" data-scroll-target="#prova-2">Prova</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -195,33 +199,37 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 </div>
 <div class="cell" data-execution_count="3">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FUNÇÃO INCOMPLETA!!!</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerar números com dígitos em ordem:</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 1122233, representado como 1^2 2^3 3^2</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 2223, representado como 1^0 2^3 3^1</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># max_digito = maior dígito</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># max_soma = soma máxima dos expoentes</span></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gerar</span>(max_digito, max_soma <span class="op">=</span> <span class="fl">10</span>)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  reps <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{Int}</span>(<span class="cn">undef</span>, max_digito)</span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ???? Continuar daqui</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>max_soma</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">converter</span>(n, n_base, digito_max)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  s <span class="op">=</span> <span class="fu">string</span>(n, base <span class="op">=</span> n_base, pad <span class="op">=</span> digito_max)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> !<span class="fu">endswith</span>(s, <span class="st">"0"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>    expoentes <span class="op">=</span> [<span class="fu">parse</span>(<span class="dt">Int</span>, c) for c <span class="kw">in</span> s]</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">parse</span>(</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>      <span class="dt">BigInt</span>,</span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>      <span class="fu">join</span>([<span class="fu">string</span>(j)<span class="op">^</span><span class="cn">e</span> for (j, <span class="cn">e</span>) <span class="kw">in</span> <span class="fu">zip</span>(<span class="fl">1</span><span class="op">:</span>digito_max, expoentes)])</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(n)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">else</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>    <span class="cf">return</span>(<span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Gera números com dígitos em ordem não-decrescente.</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a><span class="co"># digito_max: maior dígito que pode aparecer (&gt; 0)</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a><span class="co"># expoente_max: máximo de repetições de um diǵito</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Gera um vetor com "buracos". Mudar depois.</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gerar_n</span>(digito_max, expoente_max)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  n_base <span class="op">=</span> expoente_max <span class="op">+</span> <span class="fl">1</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a>  limite <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">Int</span>, <span class="fu">string</span>(expoente_max)<span class="op">^</span>digito_max, base <span class="op">=</span> n_base)</span>
+<span id="cb5-26"><a href="#cb5-26" aria-hidden="true" tabindex="-1"></a>  numeros <span class="op">=</span> [<span class="fu">converter</span>(n, n_base, digito_max) for n <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>limite]</span>
+<span id="cb5-27"><a href="#cb5-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(x <span class="op">-&gt;</span> x <span class="op">&gt;</span> <span class="fl">0</span>, <span class="fu">sort!</span>(numeros))</span>
+<span id="cb5-28"><a href="#cb5-28" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-29"><a href="#cb5-29" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
-<pre><code>gerar (generic function with 2 methods)</code></pre>
+<pre><code>gerar_n (generic function with 1 method)</code></pre>
 </div>
 </div>
 </section>
@@ -308,17 +316,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="n-termina-em-1" class="level2">
 <h2 class="anchored" data-anchor-id="n-termina-em-1"><span class="math inline">\(n\)</span> termina em <span class="math inline">\(1\)</span></h2>
 <ul>
-<li><p>Considere <span class="math inline">\(n\)</span> com dígitos em ordem não-decrescente.</p></li>
-<li><p>Se <span class="math inline">\(n\)</span> termina em <span class="math inline">\(1\)</span>, então <span class="math inline">\(n\)</span> tem que ser da forma</p>
-<p><span class="math display">\[
-n = \underbrace{11\ldots1}_{k \text{ dígitos}} = 10^{k-1} +
-10^{k-2} + \cdots + 10^2 + 10^1 + 10^0 = \frac{1 - 10^k}{1 - 10} =
-\frac{10^k - 1}{9}
-\]</span></p></li>
-<li><p>Daí, <span class="math inline">\(n^2\)</span> vai ser</p>
-<p><span class="math display">\[
-n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81}
-\]</span></p></li>
+<li><p>Considere <span class="math inline">\(n\)</span> com dígitos em ordem não-decrescente, terminando em <span class="math inline">\(1\)</span>.</p></li>
 <li><p>Por exemplo:</p>
 <div class="cell" data-execution_count="5">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">20</span></span>
@@ -365,6 +363,16 @@ Provar
 <section id="prova" class="level3">
 <h3 class="anchored" data-anchor-id="prova">Prova</h3>
 <ul>
+<li><p>Se <span class="math inline">\(n\)</span> termina em <span class="math inline">\(1\)</span>, então <span class="math inline">\(n\)</span> tem que ser da forma</p>
+<p><span class="math display">\[
+n = \underbrace{11\ldots1}_{k \text{ dígitos}} = 10^{k-1} +
+10^{k-2} + \cdots + 10^2 + 10^1 + 10^0 = \frac{1 - 10^k}{1 - 10} =
+\frac{10^k - 1}{9}
+\]</span></p></li>
+<li><p>Daí, <span class="math inline">\(n^2\)</span> vai ser</p>
+<p><span class="math display">\[
+n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81}
+\]</span></p></li>
 <li><p>Vamos mostrar que, para todo <span class="math inline">\(k &gt; 1\)</span>,</p>
 <p><span class="math display">\[
 n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \equiv 21 \bmod 100
@@ -393,55 +401,21 @@ n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \equiv 21 \bmod 100
 <section id="n-termina-em-2" class="level2">
 <h2 class="anchored" data-anchor-id="n-termina-em-2"><span class="math inline">\(n\)</span> termina em <span class="math inline">\(2\)</span></h2>
 <ul>
-<li><p>Considere <span class="math inline">\(n\)</span> com dígitos em ordem não-decrescente.</p></li>
-<li><p>Se <span class="math inline">\(n\)</span> termina em <span class="math inline">\(2\)</span>, então <span class="math inline">\(n\)</span> tem que ser da forma</p>
-<p><span class="math display">\[
-\begin{align*}
-n
-&amp;= \underbrace{11\ldots1}_{j \text{ dígitos}}\,
-\underbrace{22\ldots2}_{k \text{ dígitos}} \\
-&amp;= 2 \cdot \frac{10^k - 1}{9} + 10^k \cdot\frac{10^j - 1}{9} \\
-&amp;= \frac{2 \cdot 10^k - 2 + 10^{j+k} - 10^k}9 \\
-&amp;= \frac{10^k (10^j + 1) - 2}{9}
-\end{align*}
-\]</span></p></li>
-<li><p>Daí, <span class="math inline">\(n^2\)</span> vai ser</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; Pkg.add("SymPy")</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> n integer positive;</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> j integer nonnegative;</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> k integer positive;</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> (<span class="fl">10</span><span class="op">^</span>k <span class="op">*</span> (<span class="fl">10</span><span class="op">^</span>j <span class="op">+</span> <span class="fl">1</span>) <span class="op">-</span> <span class="fl">2</span>) <span class="op">/</span> <span class="fl">9</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n_quadrado <span class="op">=</span> n<span class="op">^</span><span class="fl">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="9">
-<p><span class="math inline">\(\left(\frac{10^{k} \left(10^{j} + 1\right)}{9} - \frac{2}{9}\right)^{2}\)</span></p>
-</div>
-</div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n_quadrado_exp <span class="op">=</span> <span class="fu">expand</span>(n_quadrado)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
-<p><span class="math inline">\(\frac{10^{2 j} 10^{2 k}}{81} + \frac{2 \cdot 10^{j} 10^{2 k}}{81} - \frac{4 \cdot 10^{j} 10^{k}}{81} + \frac{10^{2 k}}{81} - \frac{4 \cdot 10^{k}}{81} + \frac{4}{81}\)</span></p>
-</div>
-</div></li>
+<li><p>Considere <span class="math inline">\(n\)</span> com dígitos em ordem não-decrescente, terminando em <span class="math inline">\(2\)</span>.</p></li>
 <li><p>Por exemplo:</p>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
-<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
-<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
-<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
-<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2 : 4
 12 : 144
@@ -522,30 +496,298 @@ Provar
 <section id="prova-1" class="level3">
 <h3 class="anchored" data-anchor-id="prova-1">Prova</h3>
 <ul>
+<li><p>Se <span class="math inline">\(n\)</span> termina em <span class="math inline">\(2\)</span>, então <span class="math inline">\(n\)</span> tem que ser da forma</p>
+<p><span class="math display">\[
+\begin{align*}
+n
+&amp;= \underbrace{11\ldots1}_{j \text{ dígitos}}\,
+\underbrace{22\ldots2}_{k \text{ dígitos}} \\
+&amp;= 2 \cdot \frac{10^k - 1}{9} + 10^k \cdot\frac{10^j - 1}{9} \\
+&amp;= \frac{2 \cdot 10^k - 2 + 10^{j+k} - 10^k}9 \\
+&amp;= \frac{10^k (10^j + 1) - 2}{9}
+\end{align*}
+\]</span></p></li>
+<li><p>Daí, <span class="math inline">\(n^2\)</span> vai ser</p>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; Pkg.add("SymPy")</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> n integer positive;</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> j integer nonnegative;</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> k integer positive;</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> (<span class="fl">10</span><span class="op">^</span>k <span class="op">*</span> (<span class="fl">10</span><span class="op">^</span>j <span class="op">+</span> <span class="fl">1</span>) <span class="op">-</span> <span class="fl">2</span>) <span class="op">/</span> <span class="fl">9</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n_quadrado <span class="op">=</span> n<span class="op">^</span><span class="fl">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
+<p><span class="math inline">\(\left(\frac{10^{k} \left(10^{j} + 1\right)}{9} - \frac{2}{9}\right)^{2}\)</span></p>
+</div>
+</div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n_quadrado_exp <span class="op">=</span> <span class="fu">together</span>(<span class="fu">expand</span>(n_quadrado))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="11">
+<p><span class="math inline">\(\frac{10^{2 j} 10^{2 k} + 2 \cdot 10^{j} 10^{2 k} - 4 \cdot 10^{j} 10^{k} + 10^{2 k} - 4 \cdot 10^{k} + 4}{81}\)</span></p>
+</div>
+</div></li>
 <li><p>Vamos primeiro tratar o caso em que <span class="math inline">\(n\)</span> é da forma <span class="math inline">\(\underbrace{11\ldots1}_{j \text{ dígitos}}\,2\)</span>, com <span class="math inline">\(j \geq 2\)</span>.</p></li>
 <li><p>Vamos mostrar que <span class="math inline">\(n^2\)</span> termina em <span class="math inline">\(544\)</span>.</p></li>
 <li><p>Com um único dígito <span class="math inline">\(2\)</span>, <span class="math inline">\(n^2\)</span> é da forma</p>
 <div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>caso1 <span class="op">=</span> <span class="fu">subs</span>(n_quadrado_exp, (k, <span class="fl">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>caso1 <span class="op">=</span> <span class="fu">together</span>(<span class="fu">subs</span>(n_quadrado_exp, (k, <span class="fl">1</span>)))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="12">
-<p><span class="math inline">\(\frac{100 \cdot 10^{2 j}}{81} + \frac{160 \cdot 10^{j}}{81} + \frac{64}{81}\)</span></p>
+<p><span class="math inline">\(\frac{4 \cdot \left(25 \cdot 10^{2 j} + 40 \cdot 10^{j} + 16\right)}{81}\)</span></p>
 </div>
 </div></li>
 <li><p>Chamando esta expressão de <span class="math inline">\(E\)</span>, queremos mostrar que, para todo <span class="math inline">\(j \geq 2\)</span>,</p>
 <p><span class="math display">\[
-E \equiv 544 \bmod 100
+E \equiv 544 \bmod 1000
 \]</span></p></li>
 <li><p>Isto equivale a mostrar que, para todo <span class="math inline">\(j \geq 2\)</span>,</p>
 <p><span class="math display">\[
-100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 44064 \bmod 100
+100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 44064 \bmod 1000
 \]</span></p></li>
 <li><p>Ou, ainda, que</p>
 <p><span class="math display">\[
-100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 64 \bmod 100
+100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 64 \bmod 1000
 \]</span></p></li>
-<li><p>Mas, módulo <span class="math inline">\(100\)</span>, as duas primeiras parcelas são congruentes a zero (lembrando que <span class="math inline">\(j \geq 2\)</span>), e a última parcela é congruente a <span class="math inline">\(64\)</span>, o que nos dá o resultado desejado para este caso.</p></li>
-<li><p>Agora, vamos tratar o caso em que ???</p></li>
+<li><p>Mas, módulo <span class="math inline">\(1000\)</span>, as duas primeiras parcelas são congruentes a zero (lembrando que <span class="math inline">\(j \geq 2\)</span>), e a última parcela é congruente a <span class="math inline">\(64\)</span>, o que nos dá o resultado desejado para este caso.</p></li>
+<li><p>Agora, vamos tratar o caso em que <span class="math inline">\(j \geq 0\)</span>, <span class="math inline">\(k \geq 2\)</span>.</p></li>
+<li><p>Neste caso, <span class="math inline">\(n^2\)</span> vai ser da forma</p>
+<div class="cell" data-execution_count="12">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">together</span>(sympy.<span class="fu">powsimp</span>(n_quadrado_exp))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="13">
+<p><span class="math inline">\(\frac{- 4 \cdot 10^{k} - 4 \cdot 10^{j + k} + 2 \cdot 10^{j + 2 k} + 10^{2 j + 2 k} + 100^{k} + 4}{81}\)</span></p>
+</div>
+</div></li>
+<li><p>Queremos mostrar que, para todo <span class="math inline">\(k \geq 2\)</span>,</p>
+<p><span class="math display">\[
+n^2 \equiv 84 \bmod 100
+\]</span></p></li>
+<li><p>Isto equivale a mostrar que, para todo <span class="math inline">\(k \geq 2\)</span>,</p>
+<p><span class="math display">\[
+2 \cdot 10^{j + 2 k} + 10^{2 j + 2 k} + 10^{k+1}
+- 4 \cdot 10^{k} - 4 \cdot 10^{j + k} + 4
+\equiv 6804 \bmod 100
+\]</span></p></li>
+<li><p>Ou, ainda, que, para todo <span class="math inline">\(k \geq 2\)</span>,</p>
+<p><span class="math display">\[
+2 \cdot 10^{j + 2 k} + 10^{2 j + 2 k} + 10^{k+1}
+- 4 \cdot 10^{k} - 4 \cdot 10^{j + k} + 4
+\equiv 4 \bmod 100
+\]</span></p></li>
+<li><p>Examinando cada parcela, como no caso anterior, chegamos ao resultado desejado.</p></li>
 </ul>
+</section>
+</section>
+<section id="n-termina-em-3" class="level2">
+<h2 class="anchored" data-anchor-id="n-termina-em-3"><span class="math inline">\(n\)</span> termina em <span class="math inline">\(3\)</span></h2>
+<ul>
+<li><p>Considere <span class="math inline">\(n\)</span> com dígitos em ordem não-decrescente, terminando em <span class="math inline">\(3\)</span>.</p></li>
+<li><p>Por exemplo:</p>
+<div class="cell" data-execution_count="13">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> n <span class="kw">in</span> <span class="fu">gerar_n</span>(<span class="fl">3</span>, <span class="fl">5</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>3 : 9
+13 : 169
+23 : 529
+33 : 1089
+113 : 12769
+123 : 15129
+133 : 17689
+223 : 49729
+233 : 54289
+333 : 110889
+1113 : 1238769
+1123 : 1261129
+1133 : 1283689
+1223 : 1495729
+1233 : 1520289
+1333 : 1776889
+2223 : 4941729
+2233 : 4986289
+2333 : 5442889
+3333 : 11108889
+11113 : 123498769
+11123 : 123721129
+11133 : 123943689
+11223 : 125955729
+11233 : 126180289
+11333 : 128436889
+12223 : 149401729
+12233 : 149646289
+12333 : 152102889
+13333 : 177768889
+22223 : 493861729
+22233 : 494306289
+22333 : 498762889
+23333 : 544428889
+33333 : 1111088889
+111113 : 12346098769
+111123 : 12348321129
+111133 : 12350543689
+111223 : 12370555729
+111233 : 12372780289
+111333 : 12395036889
+112223 : 12594001729
+112233 : 12596246289
+112333 : 12618702889
+113333 : 12844368889
+122223 : 14938461729
+122233 : 14940906289
+122333 : 14965362889
+123333 : 15211028889
+133333 : 17777688889
+222223 : 49383061729
+222233 : 49387506289
+222333 : 49431962889
+223333 : 49877628889
+233333 : 54444288889
+1111123 : 1234594321129
+1111133 : 1234616543689
+1111223 : 1234816555729
+1111233 : 1234838780289
+1111333 : 1235061036889
+1112223 : 1237040001729
+1112233 : 1237062246289
+1112333 : 1237284702889
+1113333 : 1239510368889
+1122223 : 1259384461729
+1122233 : 1259406906289
+1122333 : 1259631362889
+1123333 : 1261877028889
+1133333 : 1284443688889
+1222223 : 1493829061729
+1222233 : 1493853506289
+1222333 : 1494097962889
+1223333 : 1496543628889
+1233333 : 1521110288889
+2222233 : 4938319506289
+2222333 : 4938763962889
+2223333 : 4943209628889
+2233333 : 4987776288889
+11111223 : 123459276555729
+11111233 : 123459498780289
+11111333 : 123461721036889
+11112223 : 123481500001729
+11112233 : 123481722246289
+11112333 : 123483944702889
+11113333 : 123506170368889
+11122223 : 123703844461729
+11122233 : 123704066906289
+11122333 : 123706291362889
+11123333 : 123728537028889
+11133333 : 123951103688889
+11222223 : 125938289061729
+11222233 : 125938513506289
+11222333 : 125940757962889
+11223333 : 125963203628889
+11233333 : 126187770288889
+12222233 : 149382979506289
+12222333 : 149385423962889
+12223333 : 149409869628889
+12233333 : 149654436288889
+22222333 : 493832083962889
+22223333 : 493876529628889
+22233333 : 494321096288889
+111112223 : 12345926100001729
+111112233 : 12345928322246289
+111112333 : 12345950544702889
+111113333 : 12346172770368889
+111122223 : 12348148444461729
+111122233 : 12348150666906289
+111122333 : 12348172891362889
+111123333 : 12348395137028889
+111133333 : 12350617703688889
+111222223 : 12370382889061729
+111222233 : 12370385113506289
+111222333 : 12370407357962889
+111223333 : 12370629803628889
+111233333 : 12372854370288889
+112222233 : 12593829579506289
+112222333 : 12593852023962889
+112223333 : 12594076469628889
+112233333 : 12596321036288889
+122222333 : 14938298683962889
+122223333 : 14938543129628889
+122233333 : 14940987696288889
+222223333 : 49383209729628889
+222233333 : 49387654296288889
+1111122223 : 1234592594444461729
+1111122233 : 1234592616666906289
+1111122333 : 1234592838891362889
+1111123333 : 1234595061137028889
+1111133333 : 1234617283703688889
+1111222223 : 1234814828889061729
+1111222233 : 1234814851113506289
+1111222333 : 1234815073357962889
+1111223333 : 1234817295803628889
+1111233333 : 1234839520370288889
+1112222233 : 1237038295579506289
+1112222333 : 1237038518023962889
+1112223333 : 1237040742469628889
+1112233333 : 1237062987036288889
+1122222333 : 1259382964683962889
+1122223333 : 1259385209129628889
+1122233333 : 1259407653696288889
+1222223333 : 1493829875729628889
+1222233333 : 1493854320296288889
+2222233333 : 4938320986296288889
+11111222223 : 123459259288889061729
+11111222233 : 123459259511113506289
+11111222333 : 123459261733357962889
+11111223333 : 123459283955803628889
+11111233333 : 123459506180370288889
+11112222233 : 123481482955579506289
+11112222333 : 123481485178023962889
+11112223333 : 123481507402469628889
+11112233333 : 123481729647036288889
+11122222333 : 123703829624683962889
+11122223333 : 123703851869129628889
+11122233333 : 123704074313696288889
+11222223333 : 125938296535729628889
+11222233333 : 125938520980296288889
+12222233333 : 149382987646296288889
+111112222233 : 12345925929555579506289
+111112222333 : 12345925951778023962889
+111112223333 : 12345926174002469628889
+111112233333 : 12345928396247036288889
+111122222333 : 12348148296224683962889
+111122223333 : 12348148518469129628889
+111122233333 : 12348150740913696288889
+111222223333 : 12370382963135729628889
+111222233333 : 12370385187580296288889
+112222233333 : 12593829654246296288889
+1111122222333 : 1234592592962224683962889
+1111122223333 : 1234592595184469129628889
+1111122233333 : 1234592617406913696288889
+1111222223333 : 1234814829629135729628889
+1111222233333 : 1234814851853580296288889
+1112222233333 : 1237038296320246296288889
+11111222223333 : 123459259296289135729628889
+11111222233333 : 123459259518513580296288889
+11112222233333 : 123481482962980246296288889
+111112222233333 : 12345925929629580246296288889</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled" title="Provar">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Provar
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>???</p>
+</div>
+</div></li>
+</ul>
+<section id="prova-2" class="level3">
+<h3 class="anchored" data-anchor-id="prova-2">Prova</h3>
 
 
 </section>
