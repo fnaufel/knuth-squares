@@ -1,0 +1,267 @@
+---
+title: "Knuth Squares"
+author: "Fernando Náufel"
+date: now
+lang: pt
+execute:
+  cache: true
+jupyter: julia-1.9
+---
+
+# Apresentação
+
+???
+
+
+# Funções
+
+```{julia}
+function isok(s)
+  s = string(s)
+  previous = '0'
+  for c in s
+    if c < previous
+      return false
+    end
+    previous = c
+  end
+  return true
+end
+```
+
+```{julia}
+function test_to_n(n)
+  for i::BigInt in 1:n
+    if isok(i) && isok(i^2)
+      println("$i : $(i^2)")
+    end
+  end
+end
+```
+
+```{julia}
+# Gerar números com dígitos em ordem:
+#
+# E.g. 1122233, representado como 1^2 2^3 3^2
+# E.g. 2223, representado como 1^0 2^3 3^1
+#
+# max_digito = maior dígito
+# max_soma = soma máxima dos expoentes
+function gerar(max_digito, max_soma = 10)
+  reps = Vector{Int}(undef, max_digito)
+  # Continuar daqui
+  
+  for soma in 1:max_soma
+    for d1 in range(soma - 1, 0, step = -1)
+      d2 = soma - d1
+      n = parse(BigInt, "1"^d1 * "2"^d2)
+      if isok(n^2)
+        indicador = " <<<"
+      else
+        indicador = ""
+      end
+      println("$n : $(n^2)")
+    end
+  end
+end
+```
+
+
+# Gerar e testar
+
+```{julia}
+test_to_n(100000000)
+```
+
+
+# Um dígito por vez
+
+## $n$ termina em $1$
+
+* Considere $n$ com dígitos em ordem não-decrescente.
+
+* Se $n$ termina em $1$, então $n$ tem que ser da forma
+
+  $$
+  n = \underbrace{11\ldots1}_{k \text{ dígitos}} = 10^{k-1} +
+  10^{k-2} + \cdots + 10^2 + 10^1 + 10^0 = \frac{1 - 10^k}{1 - 10} =
+  \frac{10^k - 1}{9}
+  $$
+  
+* Daí, $n^2$ vai ser
+
+  $$
+  n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81}
+  $$
+
+* Por exemplo:
+
+  ```{julia}
+  for i in range(1, step = 10, length = 100)
+    println("$(i) : $(i^2)")
+  end
+  ```
+
+  ::: {.callout-important title="Provar"}
+   
+  Se $n > 1$ termina em $1$, então $n^2$ nunca vai ter dígitos em
+  ordem.
+  
+  Melhor ainda: $n^2$ vai terminar com $1$, mas nunca com $11$.
+   
+  :::
+
+
+### Prova
+
+* Vamos mostrar que, para todo $k > 1$,
+
+  $$
+  n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \not\equiv 11 \bmod 100
+  $$
+
+* O que equivale a mostrar, para todo $k > 1$,
+
+  $$
+  10^{2k} - 2\cdot 10^k + 1 \not\equiv 891 \bmod 100
+  $$
+
+* Ou, ainda, para todo $k > 1$,
+
+  $$
+  10^{2k} - 2\cdot 10^k + 1 \not\equiv 91 \bmod 100
+  $$
+
+* Mas, como, para $k > 1$,
+
+  * $10^{2k} \equiv 0 \bmod 100$,
+  
+  * $2 \cdot 10^{k} \equiv 0 \bmod 100$, e
+  
+  * $1 \equiv 1 \bmod 100$.
+  
+  Concluímos que 
+  
+  $$
+  10^{2k} - 2\cdot 10^k + 1 \equiv 1 \bmod 100
+  $$
+  
+* Por exemplo:
+
+  ```{julia}
+  for k::BigInt in 2:30
+    println("k = $k \t: N = $(10^(2*k) - 2*(10^k) + 1)")
+  end
+  ```
+  
+
+## $n$ termina em $2$
+
+* Considere $n$ com dígitos em ordem não-decrescente.
+
+* Se $n$ termina em $2$, então $n$ tem que ser da forma
+
+  $$
+  \begin{align*}
+  n 
+  &= \underbrace{11\ldots1}_{j \text{ dígitos}}\,
+  \underbrace{22\ldots2}_{k \text{ dígitos}} \\
+  &= 2 \cdot \frac{10^k - 1}{9} + 10^k \cdot\frac{10^j - 1}{9} \\
+  &= \frac{2 \cdot 10^k - 2 + 10^{j+k} - 10^k}9 \\
+  &= \frac{10^k (10^j + 1) - 2}{9}
+  \end{align*}
+  $$
+  
+* Daí, $n^2$ vai ser
+
+  ```{julia}
+  # import Pkg; Pkg.add("SymPy")
+  using SymPy
+  ```
+  
+  ```{julia}
+  @vars n integer positive;
+  @vars j integer nonnegative;
+  @vars k integer positive;
+  ```
+  
+  ```{julia}
+  n = (10^k * (10^j + 1) - 2) / 9
+  n_quadrado = n^2
+  ```
+  
+  ```{julia}
+  n_quadrado_exp = expand(n_quadrado)
+  ```
+
+* Por exemplo:
+
+  ```{julia}
+  for soma in 1:10
+    for d1 in range(soma - 1, 0, step = -1)
+      d2 = soma - d1
+      n = parse(BigInt, "1"^d1 * "2"^d2)
+      if isok(n^2)
+        indicador = " <<<"
+      else
+        indicador = ""
+      end
+      println("$n : $(n^2)")
+    end
+  end
+  ```
+  
+  ::: {.callout-important title="Provar"}
+   
+  Se $n > 2$ termina em $2$, então $n^2$ sempre termina em $544$ ou
+  $84$.
+  
+  Melhor ainda,
+  
+  * Se $n$ é da forma $\underbrace{11\ldots1}_{j \text{ dígitos}}\,
+    \underbrace{22\ldots2}_{k \text{ dígitos}}$, com $k > 1$, então
+    $n^2$ termina em $84$.
+   
+  * Se $n$ é da forma $\underbrace{11\ldots1}_{j \text{ dígitos}}\,2$,
+    com $j \geq 2$, então $n^2$ termina em $544$.
+    
+  :::
+
+
+### Prova
+
+* Vamos primeiro tratar o caso em que $n$ é da forma
+  $\underbrace{11\ldots1}_{j \text{ dígitos}}\,2$, com $j \geq 2$.
+  
+* Vamos mostrar que $n^2$ termina em $544$.
+
+* Com um único dígito $2$, $n^2$ é da forma
+
+  ```{julia}
+  caso1 = subs(n_quadrado_exp, (k, 1))
+  ```
+
+* Chamando esta expressão de $E$, queremos mostrar que, para todo $j \geq 2$,
+
+  $$
+  E \equiv 544 \bmod 100
+  $$
+  
+* Isto equivale a mostrar que, para todo $j \geq 2$,
+
+  $$
+  100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 44064 \bmod 100
+  $$
+
+* Ou, ainda, que
+
+  $$
+  100 \cdot 10^{2 j} + 160 \cdot 10^{j} + 64 \equiv 64 \bmod 100
+  $$
+  
+* Mas, módulo $100$, as duas primeiras parcelas são congruentes a zero
+  (lembrando que $j \geq 2$), e a última parcela é congruente a $64$, o
+  que nos dá o resultado desejado para este caso.
+  
+* Agora, vamos tratar o caso em que ???
+

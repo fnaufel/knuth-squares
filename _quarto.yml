@@ -1,0 +1,20 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+  search: true
+  # repo-url: https://github.com/fnaufel/dorst-notes
+  # repo-actions: [edit]
+
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-depth: 3
+    theme: 
+      - journal
+      - _custom.scss
+
+# bibliography: bibliography.bib
+
