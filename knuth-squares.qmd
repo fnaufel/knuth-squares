@@ -40,6 +40,7 @@ end
 ```
 
 ```{julia}
+# FUNÇÃO INCOMPLETA!!!
 # Gerar números com dígitos em ordem:
 #
 # E.g. 1122233, representado como 1^2 2^3 3^2
@@ -49,7 +50,7 @@ end
 # max_soma = soma máxima dos expoentes
 function gerar(max_digito, max_soma = 10)
   reps = Vector{Int}(undef, max_digito)
-  # Continuar daqui
+  # ???? Continuar daqui
   
   for soma in 1:max_soma
     for d1 in range(soma - 1, 0, step = -1)
@@ -97,8 +98,9 @@ test_to_n(100000000)
 * Por exemplo:
 
   ```{julia}
-  for i in range(1, step = 10, length = 100)
-    println("$(i) : $(i^2)")
+  for i in 2:20
+    local n::BigInt = parse(BigInt, "1" ^ i)
+    println("$n : $(n^2)")
   end
   ```
 
@@ -107,7 +109,7 @@ test_to_n(100000000)
   Se $n > 1$ termina em $1$, então $n^2$ nunca vai ter dígitos em
   ordem.
   
-  Melhor ainda: $n^2$ vai terminar com $1$, mas nunca com $11$.
+  Melhor ainda: $n^2$ vai terminar com $21$.
    
   :::
 
@@ -117,19 +119,19 @@ test_to_n(100000000)
 * Vamos mostrar que, para todo $k > 1$,
 
   $$
-  n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \not\equiv 11 \bmod 100
+  n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \equiv 21 \bmod 100
   $$
 
 * O que equivale a mostrar, para todo $k > 1$,
 
   $$
-  10^{2k} - 2\cdot 10^k + 1 \not\equiv 891 \bmod 100
+  10^{2k} - 2\cdot 10^k + 1 \equiv 1701 \bmod 100
   $$
 
 * Ou, ainda, para todo $k > 1$,
 
   $$
-  10^{2k} - 2\cdot 10^k + 1 \not\equiv 91 \bmod 100
+  10^{2k} - 2\cdot 10^k + 1 \equiv 1 \bmod 100
   $$
 
 * Mas, como, para $k > 1$,
@@ -145,15 +147,7 @@ test_to_n(100000000)
   $$
   10^{2k} - 2\cdot 10^k + 1 \equiv 1 \bmod 100
   $$
-  
-* Por exemplo:
 
-  ```{julia}
-  for k::BigInt in 2:30
-    println("k = $k \t: N = $(10^(2*k) - 2*(10^k) + 1)")
-  end
-  ```
-  
 
 ## $n$ termina em $2$
 

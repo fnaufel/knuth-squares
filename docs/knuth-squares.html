@@ -166,7 +166,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="funções" class="level1">
 <h1>Funções</h1>
-<div class="cell" data-execution_count="2">
+<div class="cell" data-execution_count="1">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">isok</span>(s)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  s <span class="op">=</span> <span class="fu">string</span>(s)</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  previous <span class="op">=</span> <span class="ch">'0'</span></span>
@@ -182,7 +182,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>isok (generic function with 1 method)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="3">
+<div class="cell" data-execution_count="2">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">test_to_n</span>(n)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> i<span class="op">::</span><span class="dt">BigInt </span><span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>n</span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">isok</span>(i) <span class="op">&amp;&amp;</span> <span class="fu">isok</span>(i<span class="op">^</span><span class="fl">2</span>)</span>
@@ -194,31 +194,32 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>test_to_n (generic function with 1 method)</code></pre>
 </div>
 </div>
-<div class="cell" data-execution_count="4">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerar números com dígitos em ordem:</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 1122233, representado como 1^2 2^3 3^2</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 2223, representado como 1^0 2^3 3^1</span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co"># max_digito = maior dígito</span></span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># max_soma = soma máxima dos expoentes</span></span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gerar</span>(max_digito, max_soma <span class="op">=</span> <span class="fl">10</span>)</span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  reps <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{Int}</span>(<span class="cn">undef</span>, max_digito)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Continuar daqui</span></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>max_soma</span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>      d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
-<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
-<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="3">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># FUNÇÃO INCOMPLETA!!!</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Gerar números com dígitos em ordem:</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 1122233, representado como 1^2 2^3 3^2</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co"># E.g. 2223, representado como 1^0 2^3 3^1</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="co">#</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="co"># max_digito = maior dígito</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a><span class="co"># max_soma = soma máxima dos expoentes</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="kw">function</span> <span class="fu">gerar</span>(max_digito, max_soma <span class="op">=</span> <span class="fl">10</span>)</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  reps <span class="op">=</span> <span class="fu">Vector</span><span class="dt">{Int}</span>(<span class="cn">undef</span>, max_digito)</span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># ???? Continuar daqui</span></span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span>max_soma</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>    <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>      d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>      n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>      <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>      <span class="cf">else</span></span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>        indicador <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>      <span class="cf">end</span></span>
+<span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>      <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
+<span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb5-24"><a href="#cb5-24" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb5-25"><a href="#cb5-25" aria-hidden="true" tabindex="-1"></a><span class="kw">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display" data-execution_count="4">
 <pre><code>gerar (generic function with 2 methods)</code></pre>
 </div>
@@ -226,7 +227,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="gerar-e-testar" class="level1">
 <h1>Gerar e testar</h1>
-<div class="cell" data-execution_count="5">
+<div class="cell" data-execution_count="4">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">test_to_n</span>(<span class="fl">100000000</span>)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>1 : 1
@@ -319,111 +320,31 @@ n = \underbrace{11\ldots1}_{k \text{ dígitos}} = 10^{k-1} +
 n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81}
 \]</span></p></li>
 <li><p>Por exemplo:</p>
-<div class="cell" data-execution_count="6">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fu">range</span>(<span class="fl">1</span>, step <span class="op">=</span> <span class="fl">10</span>, length <span class="op">=</span> <span class="fl">100</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>(i)<span class="st"> : </span><span class="sc">$</span>(i<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="5">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> i <span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">20</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">local</span> n<span class="op">::</span><span class="dt">BigInt </span><span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span> <span class="op">^</span> i)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>1 : 1
-11 : 121
-21 : 441
-31 : 961
-41 : 1681
-51 : 2601
-61 : 3721
-71 : 5041
-81 : 6561
-91 : 8281
-101 : 10201
+<pre><code>11 : 121
 111 : 12321
-121 : 14641
-131 : 17161
-141 : 19881
-151 : 22801
-161 : 25921
-171 : 29241
-181 : 32761
-191 : 36481
-201 : 40401
-211 : 44521
-221 : 48841
-231 : 53361
-241 : 58081
-251 : 63001
-261 : 68121
-271 : 73441
-281 : 78961
-291 : 84681
-301 : 90601
-311 : 96721
-321 : 103041
-331 : 109561
-341 : 116281
-351 : 123201
-361 : 130321
-371 : 137641
-381 : 145161
-391 : 152881
-401 : 160801
-411 : 168921
-421 : 177241
-431 : 185761
-441 : 194481
-451 : 203401
-461 : 212521
-471 : 221841
-481 : 231361
-491 : 241081
-501 : 251001
-511 : 261121
-521 : 271441
-531 : 281961
-541 : 292681
-551 : 303601
-561 : 314721
-571 : 326041
-581 : 337561
-591 : 349281
-601 : 361201
-611 : 373321
-621 : 385641
-631 : 398161
-641 : 410881
-651 : 423801
-661 : 436921
-671 : 450241
-681 : 463761
-691 : 477481
-701 : 491401
-711 : 505521
-721 : 519841
-731 : 534361
-741 : 549081
-751 : 564001
-761 : 579121
-771 : 594441
-781 : 609961
-791 : 625681
-801 : 641601
-811 : 657721
-821 : 674041
-831 : 690561
-841 : 707281
-851 : 724201
-861 : 741321
-871 : 758641
-881 : 776161
-891 : 793881
-901 : 811801
-911 : 829921
-921 : 848241
-931 : 866761
-941 : 885481
-951 : 904401
-961 : 923521
-971 : 942841
-981 : 962361
-991 : 982081</code></pre>
+1111 : 1234321
+11111 : 123454321
+111111 : 12345654321
+1111111 : 1234567654321
+11111111 : 123456787654321
+111111111 : 12345678987654321
+1111111111 : 1234567900987654321
+11111111111 : 123456790120987654321
+111111111111 : 12345679012320987654321
+1111111111111 : 1234567901234320987654321
+11111111111111 : 123456790123454320987654321
+111111111111111 : 12345679012345654320987654321
+1111111111111111 : 1234567901234567654320987654321
+11111111111111111 : 123456790123456787654320987654321
+111111111111111111 : 12345679012345678987654320987654321
+1111111111111111111 : 1234567901234567900987654320987654321
+11111111111111111111 : 123456790123456790120987654320987654321</code></pre>
 </div>
 </div>
 <div class="callout callout-style-default callout-important callout-titled" title="Provar">
@@ -437,7 +358,7 @@ Provar
 </div>
 <div class="callout-body-container callout-body">
 <p>Se <span class="math inline">\(n &gt; 1\)</span> termina em <span class="math inline">\(1\)</span>, então <span class="math inline">\(n^2\)</span> nunca vai ter dígitos em ordem.</p>
-<p>Melhor ainda: <span class="math inline">\(n^2\)</span> vai terminar com <span class="math inline">\(1\)</span>, mas nunca com <span class="math inline">\(11\)</span>.</p>
+<p>Melhor ainda: <span class="math inline">\(n^2\)</span> vai terminar com <span class="math inline">\(21\)</span>.</p>
 </div>
 </div></li>
 </ul>
@@ -446,15 +367,15 @@ Provar
 <ul>
 <li><p>Vamos mostrar que, para todo <span class="math inline">\(k &gt; 1\)</span>,</p>
 <p><span class="math display">\[
-n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \not\equiv 11 \bmod 100
+n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \equiv 21 \bmod 100
 \]</span></p></li>
 <li><p>O que equivale a mostrar, para todo <span class="math inline">\(k &gt; 1\)</span>,</p>
 <p><span class="math display">\[
-10^{2k} - 2\cdot 10^k + 1 \not\equiv 891 \bmod 100
+10^{2k} - 2\cdot 10^k + 1 \equiv 1701 \bmod 100
 \]</span></p></li>
 <li><p>Ou, ainda, para todo <span class="math inline">\(k &gt; 1\)</span>,</p>
 <p><span class="math display">\[
-10^{2k} - 2\cdot 10^k + 1 \not\equiv 91 \bmod 100
+10^{2k} - 2\cdot 10^k + 1 \equiv 1 \bmod 100
 \]</span></p></li>
 <li><p>Mas, como, para <span class="math inline">\(k &gt; 1\)</span>,</p>
 <ul>
@@ -466,43 +387,6 @@ n^2 = \frac{10^{2k} - 2\cdot 10^k + 1}{81} \not\equiv 11 \bmod 100
 <p><span class="math display">\[
 10^{2k} - 2\cdot 10^k + 1 \equiv 1 \bmod 100
 \]</span></p></li>
-<li><p>Por exemplo:</p>
-<div class="cell" data-execution_count="7">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> k<span class="op">::</span><span class="dt">BigInt </span><span class="kw">in</span> <span class="fl">2</span><span class="op">:</span><span class="fl">30</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">println</span>(<span class="st">"k = </span><span class="sc">$</span>k<span class="st"> </span><span class="sc">\t</span><span class="st">: N = </span><span class="sc">$</span>(<span class="fl">10</span><span class="op">^</span>(<span class="fl">2</span><span class="op">*</span>k) <span class="op">-</span> <span class="fl">2</span><span class="fu">*</span>(<span class="fl">10</span><span class="op">^</span>k) <span class="op">+</span> <span class="fl">1</span>)<span class="st">"</span>)</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>k = 2     : N = 9801
-k = 3     : N = 998001
-k = 4     : N = 99980001
-k = 5     : N = 9999800001
-k = 6     : N = 999998000001
-k = 7     : N = 99999980000001
-k = 8     : N = 9999999800000001
-k = 9     : N = 999999998000000001
-k = 10    : N = 99999999980000000001
-k = 11    : N = 9999999999800000000001
-k = 12    : N = 999999999998000000000001
-k = 13    : N = 99999999999980000000000001
-k = 14    : N = 9999999999999800000000000001
-k = 15    : N = 999999999999998000000000000001
-k = 16    : N = 99999999999999980000000000000001
-k = 17    : N = 9999999999999999800000000000000001
-k = 18    : N = 999999999999999998000000000000000001
-k = 19    : N = 99999999999999999980000000000000000001
-k = 20    : N = 9999999999999999999800000000000000000001
-k = 21    : N = 999999999999999999998000000000000000000001
-k = 22    : N = 99999999999999999999980000000000000000000001
-k = 23    : N = 9999999999999999999999800000000000000000000001
-k = 24    : N = 999999999999999999999998000000000000000000000001
-k = 25    : N = 99999999999999999999999980000000000000000000000001
-k = 26    : N = 9999999999999999999999999800000000000000000000000001
-k = 27    : N = 999999999999999999999999998000000000000000000000000001
-k = 28    : N = 99999999999999999999999999980000000000000000000000000001
-k = 29    : N = 9999999999999999999999999999800000000000000000000000000001
-k = 30    : N = 999999999999999999999999999998000000000000000000000000000001</code></pre>
-</div>
-</div></li>
 </ul>
 </section>
 </section>
@@ -522,42 +406,42 @@ n
 \end{align*}
 \]</span></p></li>
 <li><p>Daí, <span class="math inline">\(n^2\)</span> vai ser</p>
+<div class="cell" data-execution_count="6">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; Pkg.add("SymPy")</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<div class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> n integer positive;</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> j integer nonnegative;</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> k integer positive;</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
 <div class="cell" data-execution_count="8">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># import Pkg; Pkg.add("SymPy")</span></span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="im">using</span> <span class="bu">SymPy</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="9">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> n integer positive;</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> j integer nonnegative;</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="pp">@vars</span> k integer positive;</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<div class="cell" data-execution_count="10">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> (<span class="fl">10</span><span class="op">^</span>k <span class="op">*</span> (<span class="fl">10</span><span class="op">^</span>j <span class="op">+</span> <span class="fl">1</span>) <span class="op">-</span> <span class="fl">2</span>) <span class="op">/</span> <span class="fl">9</span></span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>n_quadrado <span class="op">=</span> n<span class="op">^</span><span class="fl">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>n <span class="op">=</span> (<span class="fl">10</span><span class="op">^</span>k <span class="op">*</span> (<span class="fl">10</span><span class="op">^</span>j <span class="op">+</span> <span class="fl">1</span>) <span class="op">-</span> <span class="fl">2</span>) <span class="op">/</span> <span class="fl">9</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>n_quadrado <span class="op">=</span> n<span class="op">^</span><span class="fl">2</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="9">
 <p><span class="math inline">\(\left(\frac{10^{k} \left(10^{j} + 1\right)}{9} - \frac{2}{9}\right)^{2}\)</span></p>
 </div>
 </div>
-<div class="cell" data-execution_count="11">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>n_quadrado_exp <span class="op">=</span> <span class="fu">expand</span>(n_quadrado)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="11">
+<div class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>n_quadrado_exp <span class="op">=</span> <span class="fu">expand</span>(n_quadrado)</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="10">
 <p><span class="math inline">\(\frac{10^{2 j} 10^{2 k}}{81} + \frac{2 \cdot 10^{j} 10^{2 k}}{81} - \frac{4 \cdot 10^{j} 10^{k}}{81} + \frac{10^{2 k}}{81} - \frac{4 \cdot 10^{k}}{81} + \frac{4}{81}\)</span></p>
 </div>
 </div></li>
 <li><p>Por exemplo:</p>
-<div class="cell" data-execution_count="12">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
-<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
-<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
-<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
-<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
-<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">""</span></span>
-<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
-<span id="cb17-10"><a href="#cb17-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
-<span id="cb17-11"><a href="#cb17-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
-<span id="cb17-12"><a href="#cb17-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell" data-execution_count="10">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> soma <span class="kw">in</span> <span class="fl">1</span><span class="op">:</span><span class="fl">10</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>  <span class="cf">for</span> d1 <span class="kw">in</span> <span class="fu">range</span>(soma <span class="op">-</span> <span class="fl">1</span>, <span class="fl">0</span>, step <span class="op">=</span> <span class="op">-</span><span class="fl">1</span>)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>    d2 <span class="op">=</span> soma <span class="op">-</span> d1</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>    n <span class="op">=</span> <span class="fu">parse</span>(<span class="dt">BigInt</span>, <span class="st">"1"</span><span class="op">^</span>d1 <span class="op">*</span> <span class="st">"2"</span><span class="op">^</span>d2)</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="fu">isok</span>(n<span class="op">^</span><span class="fl">2</span>)</span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">" &lt;&lt;&lt;"</span></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>    <span class="cf">else</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>      indicador <span class="op">=</span> <span class="st">""</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>    <span class="cf">end</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">println</span>(<span class="st">"</span><span class="sc">$</span>n<span class="st"> : </span><span class="sc">$</span>(n<span class="op">^</span><span class="fl">2</span>)<span class="st">"</span>)</span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">end</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a><span class="cf">end</span></span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>2 : 4
 12 : 144
@@ -641,9 +525,9 @@ Provar
 <li><p>Vamos primeiro tratar o caso em que <span class="math inline">\(n\)</span> é da forma <span class="math inline">\(\underbrace{11\ldots1}_{j \text{ dígitos}}\,2\)</span>, com <span class="math inline">\(j \geq 2\)</span>.</p></li>
 <li><p>Vamos mostrar que <span class="math inline">\(n^2\)</span> termina em <span class="math inline">\(544\)</span>.</p></li>
 <li><p>Com um único dígito <span class="math inline">\(2\)</span>, <span class="math inline">\(n^2\)</span> é da forma</p>
-<div class="cell" data-execution_count="13">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>caso1 <span class="op">=</span> <span class="fu">subs</span>(n_quadrado_exp, (k, <span class="fl">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-display" data-execution_count="13">
+<div class="cell" data-execution_count="11">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode julia code-with-copy"><code class="sourceCode julia"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>caso1 <span class="op">=</span> <span class="fu">subs</span>(n_quadrado_exp, (k, <span class="fl">1</span>))</span></code><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display" data-execution_count="12">
 <p><span class="math inline">\(\frac{100 \cdot 10^{2 j}}{81} + \frac{160 \cdot 10^{j}}{81} + \frac{64}{81}\)</span></p>
 </div>
 </div></li>
